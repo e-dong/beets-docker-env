@@ -1,0 +1,13 @@
+directory: /work/out
+library: /work/lib.db
+
+import:
+  move: yes
+
+plugins: fetchart embedart duplicates chroma fromfilename
+
+chroma:
+  auto: yes
+
+acoustid:
+  apikey: qGMi0Ki8Rk

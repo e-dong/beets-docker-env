@@ -1,0 +1,8 @@
+# beet db
+*.db
+
+# internal state
+state.pickle
+
+# music lib output
+out
