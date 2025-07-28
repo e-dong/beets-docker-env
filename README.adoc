@@ -1,0 +1,30 @@
+= README
+
+:toc:
+
+== Docker Env for Beets
+
+Containerized environment to manage beets music libraries.
+
+=== Motivation
+One of the requirements to install the https://beets.readthedocs.io/en/v1.3.17/plugins/chroma.html[chroma] plugin
+is to install `pyacoustid`, which has a dependency on `audioread`. `audioread` has a dependency on ` aifc` which is https://docs.python.org/3/library/aifc.html[deprecated in python3.13.x]
+
+[source,text]
+----
+pyacoustid==1.3.0                              
+├── audioread [required: Any, installed: 3.0.1]
+└── requests [required: Any, installed: 2.32.4]
+    ├── charset-normalizer [required: >=2,<4, installed: 3.4.2]
+    ├── idna [required: >=2.5,<4, installed: 3.10]
+    └── urllib3 [required: >=1.21.1,<3, installed: 2.5.0]
+----
+
+The container environment serves as a reproducible environment and a way to not mess with my system environment (E.g roll back to python 3.12.x)
+
+
+=== References
+
+https://beets.readthedocs.io/en/latest/index.html[Beets documentation]
+
+
