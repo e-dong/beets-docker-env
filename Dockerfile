@@ -4,7 +4,8 @@ RUN apt-get update -y && \
     libchromaprint1 \
     gstreamer1.0 \
     python3-gi \
-    ffmpeg
+    ffmpeg && \
+   curl -fsSL https://deno.land/install.sh | sh
 
 # Setup permissions
 ARG USERNAME
@@ -18,7 +19,8 @@ RUN cd / && python3 -m venv venv && \
 
 # Setup folders
 USER ${USERNAME}
-ENV WORKDIR /work
+ENV WORKDIR=/work
+ENV PATH="/home/${USERNAME}/.deno/bin:$PATH"
 WORKDIR ${WORKDIR}
 RUN mkdir -p /home/${USERNAME}/.cache
 

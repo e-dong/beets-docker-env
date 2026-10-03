@@ -8,4 +8,6 @@ yt-dlp -f bestaudio \
   --extract-audio \
   --audio-format mp3 \
   --audio-quality 0 \
-  --embed-thumbnail "${1}"
+  --embed-thumbnail \
+  --remote-components ejs:github \
+  "${1}"
