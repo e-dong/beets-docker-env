@@ -4,8 +4,7 @@ RUN apt-get update -y && \
     libchromaprint1 \
     gstreamer1.0 \
     python3-gi \
-    ffmpeg && \
-   curl -fsSL https://deno.land/install.sh | sh
+    ffmpeg
 
 # Setup permissions
 ARG USERNAME
@@ -19,8 +18,8 @@ RUN cd / && python3 -m venv venv && \
 
 # Setup folders
 USER ${USERNAME}
+RUN curl -fsSL https://deno.land/install.sh | sh
 ENV WORKDIR=/work
-ENV PATH="/home/${USERNAME}/.deno/bin:$PATH"
 WORKDIR ${WORKDIR}
 RUN mkdir -p /home/${USERNAME}/.cache
 
@@ -29,5 +28,6 @@ RUN /venv/bin/pip install -U \
      "beets[chroma]" \
      yt-dlp
 
-RUN echo "source /venv/bin/activate" > /home/${USERNAME}/.bash_profile && \
-  chmod u+x /home/${USERNAME}/.bash_profile
+RUN echo "source /venv/bin/activate" >> /home/${USERNAME}/.bashrc && \
+  chmod u+x /home/${USERNAME}/.bashrc
+ENV PATH="/home/${USERNAME}/.deno/bin:$PATH"
