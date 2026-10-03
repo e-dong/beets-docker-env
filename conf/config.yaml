@@ -4,7 +4,7 @@ library: /work/lib.db
 import:
   move: yes
 
-plugins: fetchart embedart duplicates chroma fromfilename
+plugins: musicbrainz fetchart embedart duplicates chroma fromfilename
 
 chroma:
   auto: yes
